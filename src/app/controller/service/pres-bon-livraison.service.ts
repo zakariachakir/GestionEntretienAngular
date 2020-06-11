@@ -10,7 +10,7 @@ import {PresBonLivraison} from '../model/pres-bon-livraison.model';
 export class PresBonLivraisonService {
 
   private _foundedPresBonLivraisons = new Array<PresBonLivraison>();
-  private url = 'http://localhost:8090/GestionEntretien/bonLivraison/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonLivraison/';
   constructor(private http: HttpClient, private toast: ToastrService) { }
   public findAll() {
     this.http.get<Array<PresBonLivraison>>(this.url).subscribe(

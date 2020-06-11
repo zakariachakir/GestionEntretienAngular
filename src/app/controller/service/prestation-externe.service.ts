@@ -10,7 +10,7 @@ export class PrestationExterneService {
 
   private _dataPresExterne : number;
   private _foundedPrestationExternes = new Array<PrestationExterne>();
-  private url = 'http://localhost:8090/GestionEntretien/prestationExterne/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/prestationExterne/';
   constructor(private http: HttpClient, private toast: ToastrService) { }
 
   public save(prestationE: PrestationExterne) {

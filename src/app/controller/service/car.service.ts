@@ -7,9 +7,9 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class CarService {
-private url = 'http://localhost:8090/GestionEntretien/vehicule/';
-private urlu = 'http://localhost:8090/GestionEntretien/vehicule/update';
-private urld = 'http://localhost:8090/GestionEntretien/vehicule/deleteVehicule/';
+private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/vehicule/';
+private urlu = 'http://localhost:8080/GestionEntretien/GestionEntretien/vehicule/update';
+private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/vehicule/deleteVehicule/';
   constructor(private http: HttpClient) {}
 
   public save(car: Car)  {

@@ -7,10 +7,10 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-  private urls = 'http://localhost:8090/GestionEntretien/Login/';
-  private urlu = 'http://localhost:8090/GestionEntretien/Login/update';
-  private urld = 'http://localhost:8090/GestionEntretien/Login/delete/';
-  private urlfind = 'http://localhost:8090/GestionEntretien/Login/username/';
+  private urls = 'http://localhost:8080/GestionEntretien/GestionEntretien/Login/';
+  private urlu = 'http://localhost:8080/GestionEntretien/GestionEntretien/Login/update';
+  private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/Login/delete/';
+  private urlfind = 'http://localhost:8080/GestionEntretien/GestionEntretien/Login/username/';
   private _user = new Users();
   get user(): Users {
     return this._user;

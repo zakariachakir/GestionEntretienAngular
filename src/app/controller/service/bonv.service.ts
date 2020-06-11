@@ -7,9 +7,9 @@ import {BonsV} from '../model/bons-v.model';
   providedIn: 'root'
 })
 export class BonvService {
-  private url = 'http://localhost:8090/GestionEntretien/bonvidange/';
-  private urlu = 'http://localhost:8090/GestionEntretien/bonvidange/update';
-  private urld = 'http://localhost:8090/GestionEntretien/bonvidange/delete/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonvidange/';
+  private urlu = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonvidange/update';
+  private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonvidange/delete/';
   constructor(private http: HttpClient) {}
 
   public save(bonvidange: BonsV)  {

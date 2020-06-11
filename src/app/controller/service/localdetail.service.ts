@@ -9,7 +9,7 @@ import {ToastrService} from 'ngx-toastr';
 export class LocaldetailService {
   private _errors: number;
   private _foundedLocalDetails = new Array<Localdetail>();
-  private url = 'http://localhost:8090/GestionEntretien/materielsLocale/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/materielsLocale/';
   constructor(private http: HttpClient, private toast: ToastrService) { }
 
 

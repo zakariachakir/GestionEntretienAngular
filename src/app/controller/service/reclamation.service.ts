@@ -17,8 +17,8 @@ export class ReclamationService {
   private _foundedReclamationsNonTraiter = new Array<Reclamation>();
   // tslint:disable-next-line:variable-name
   private _foundedReclamationsemploye = new Array<Reclamation>();
-  private url = 'http://localhost:8090/GestionEntretien/reclamation/';
-  private urlr = 'http://localhost:8090/GestionEntretien/reclamation/reclaments/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/reclamation/';
+  private urlr = 'http://localhost:8080/GestionEntretien/GestionEntretien/reclamation/reclaments/';
 
   constructor(private http: HttpClient, private toast: ToastrService) {
   }

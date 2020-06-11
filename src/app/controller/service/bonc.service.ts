@@ -7,9 +7,9 @@ import {BonsC} from '../model/bons-c.model';
   providedIn: 'root'
 })
 export class BoncService {
-  private url = 'http://localhost:8090/GestionEntretien/boncarburant/';
-  private urlu = 'http://localhost:8090/GestionEntretien/boncarburant/update';
-  private urld = 'http://localhost:8090/GestionEntretien/boncarburant/delete/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/boncarburant/';
+  private urlu = 'http://localhost:8080/GestionEntretien/GestionEntretien/boncarburant/update';
+  private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/boncarburant/delete/';
   constructor(private http: HttpClient) {}
 
   public save(boncarburant: BonsC)  {

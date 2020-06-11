@@ -7,9 +7,9 @@ import {Agent} from '../model/agent.model';
   providedIn: 'root'
 })
 export class AgentService {
-  private url = 'http://localhost:8090/GestionEntretien/agent/';
-  private urlu = 'http://localhost:8090/GestionEntretien/agent/update';
-  private urld = 'http://localhost:8090/GestionEntretien/agent/deleteAgent/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/agent/';
+  private urlu = 'http://localhost:8080/GestionEntretien/GestionEntretien/agent/update';
+  private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/agent/deleteAgent/';
   constructor(private http: HttpClient) {}
 
   public save(agent: Agent)  {

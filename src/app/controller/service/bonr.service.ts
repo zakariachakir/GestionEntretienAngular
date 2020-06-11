@@ -7,9 +7,9 @@ import {BonsR} from '../model/bons-r.model';
   providedIn: 'root'
 })
 export class BonrService {
-  private url = 'http://localhost:8090/GestionEntretien/bonreparation/';
-  private urlu = 'http://localhost:8090/GestionEntretien/bonreparation/update';
-  private urld = 'http://localhost:8090/GestionEntretien/bonreparation/delete/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonreparation/';
+  private urlu = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonreparation/update';
+  private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonreparation/delete/';
   constructor(private http: HttpClient) {}
 
   public save(bonreparation: BonsR)  {

@@ -8,7 +8,7 @@ import {Materiel} from '../model/materiel.model';
 export class MaterielService {
 
   private _foundedMateriels = new Array<Materiel>();
-  private url = 'http://localhost:8090/GestionEntretien/materiel/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/materiel/';
   constructor(private http: HttpClient) {}
 
   save(materiel: Materiel) {

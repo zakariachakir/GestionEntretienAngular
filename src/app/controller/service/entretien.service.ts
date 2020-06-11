@@ -7,8 +7,8 @@ import {Entretien} from '../model/entretien.model';
   providedIn: 'root'
 })
 export class EntretienService {
-  private url = 'http://localhost:8090/GestionEntretien/entretien/';
-  private urld = 'http://localhost:8090/GestionEntretien/entretien/delete/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/entretien/';
+  private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/entretien/delete/';
   constructor(private http: HttpClient) {}
 
   public findAll(): Observable<Entretien[]> {

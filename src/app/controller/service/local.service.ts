@@ -10,7 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 export class LocalService {
 
   private _foudedLocales = new Array<Local>();
-  private url = 'http://localhost:8090/GestionEntretien/locale/';
+  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/locale/';
   constructor(private http: HttpClient, private toast: ToastrService) { }
 
   public save(locale: Local) {

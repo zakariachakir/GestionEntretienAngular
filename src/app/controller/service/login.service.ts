@@ -17,6 +17,34 @@ export class LoginService {
   private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/Login/';
   private _currentuser: Users = null;
   private _progressLogen: boolean;
+  private _type: string;
+  private _prenom: string;
+  private _nomm: string;
+
+
+  get prenom(): string {
+    return this._prenom;
+  }
+
+  set prenom(value: string) {
+    this._prenom = value;
+  }
+
+  get nomm(): string {
+    return this._nomm;
+  }
+
+  set nomm(value: string) {
+    this._nomm = value;
+  }
+
+  get type(): string {
+    return this._type;
+  }
+
+  set type(value: string) {
+    this._type = value;
+  }
 
   constructor(private http: HttpClient , private usersService: UsersService , private route: Router,
               private messageService: MessageService) {}
@@ -134,6 +162,9 @@ export class LoginService {
                this.currentuser = dataa;
                this.authenticate();
                if (this.authenticate()) {
+                 this.type = localStorage.getItem('type');
+                 this.prenom = localStorage.getItem('nom');
+                 this.nomm = localStorage.getItem('prenom');
                  window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
                }
                console.log(this.currentuser);

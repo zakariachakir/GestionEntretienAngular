@@ -12,9 +12,6 @@ import {AuthenticationService} from './controller/service/authentication.service
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  prenomm = localStorage.getItem('prenom');
-  nomm = localStorage.getItem('nom');
-  typee = localStorage.getItem('type');
   items: MenuItem[];
   itemsEmploye: MenuItem[];
 
@@ -25,6 +22,17 @@ export class AppComponent implements OnInit {
    logout() {
     this.loginService.logOut();
    }
+
+   get typee(): string {
+    return this.loginService.type;
+   }
+   get nomm(): string {
+    return this.loginService.nomm;
+   }
+   get prenomm(): string {
+    return this.loginService.prenom;
+   }
+
   ngOnInit() {
     this.items = [
     {label: 'Accueil', icon: 'pi pi-fw pi-home', routerLink: 'accueil'},

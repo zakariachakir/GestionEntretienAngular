@@ -33,7 +33,7 @@ export class UserinformationsComponent implements OnInit {
 
   ngOnInit() {
     if (this.typeuser === 'administrateur' ) {
-      window.location.href = 'http://localhost:4200/accueil';
+      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
     }
     this.userform = this.fb.group({
       username: new FormControl('', Validators.required),

@@ -47,7 +47,7 @@ export class MaterielComponent implements OnInit {
 
   ngOnInit() {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:4200/accueil';
+      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
     } else {
 
       this.materielService.findAll();

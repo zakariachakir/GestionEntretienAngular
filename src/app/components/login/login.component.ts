@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   islogged() {
     if (this.loginService.isUserLoggedIn()) {
-      window.location.href = 'http://localhost:4200/accueil';
+      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
     }
   }
 

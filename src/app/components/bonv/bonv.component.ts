@@ -47,7 +47,7 @@ export class BonvComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:4200/accueil';
+      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
     } else {
       this.userform = this.fb.group({
         numbonV: new FormControl('', Validators.required),

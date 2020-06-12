@@ -5,7 +5,7 @@ import {Users} from '../model/users.model';
 import {UsersService} from './users.service';
 import {Router} from '@angular/router';
 import {AuthenticationService} from './authentication.service';
-import {MessageService} from "primeng";
+import {MessageService} from 'primeng';
 
 @Injectable({
   providedIn: 'root'
@@ -102,7 +102,7 @@ export class LoginService {
     localStorage.removeItem('password');
     localStorage.removeItem('telephone');
     localStorage.removeItem('reference');
-    window.location.href = 'http://localhost:4200/';
+    window.location.href = 'http://localhost:8080/Gestionentretienf/';
   }
 
 
@@ -134,14 +134,14 @@ export class LoginService {
                this.currentuser = dataa;
                this.authenticate();
                if (this.authenticate()) {
-                 window.location.href = 'http://localhost:4200/accueil';
+                 window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
                }
                console.log(this.currentuser);
                this.progressLogen = false;
              }
            );
            //    this.route.navigate(['accueil']);
-           //    window.location.href = 'http://localhost:4200/accueil';
+           //    window.location.href = 'http://localhost:8080/Gestionentretienf/accueil';
          }
        },
        error => {

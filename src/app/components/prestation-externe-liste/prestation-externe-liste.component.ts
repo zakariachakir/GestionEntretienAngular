@@ -52,7 +52,7 @@ export class PrestationExterneListeComponent implements OnInit {
 
   ngOnInit() {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:4200/accueil';
+      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
     } else {
       this.prestationExterneService.findAll();
       this.reclamationService.findAllReclamationsNonTraiter();

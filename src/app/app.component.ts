@@ -14,7 +14,9 @@ import {AuthenticationService} from './controller/service/authentication.service
 export class AppComponent implements OnInit {
   items: MenuItem[];
   itemsEmploye: MenuItem[];
-
+  type = localStorage.getItem('type');
+  nom = localStorage.getItem('nom');
+  prenom = localStorage.getItem('prenom');
 
   constructor(private loginService: LoginService , private router: Router , private auth: AuthenticationService) {
   }
@@ -27,13 +29,19 @@ export class AppComponent implements OnInit {
     return this.loginService.type;
    }
    get nomm(): string {
-    return this.loginService.nomm;
+     return this.loginService.nomm;
    }
    get prenomm(): string {
-    return this.loginService.prenom;
+     return this.loginService.prenom;
    }
 
   ngOnInit() {
+    if(localStorage.getItem('type') !== null || localStorage.getItem('type') !== undefined) {
+      console.log(localStorage.getItem('prenom'));
+      this.loginService.prenom = localStorage.getItem('prenom');
+      this.loginService.nomm = localStorage.getItem('nom');
+      this.loginService.type = localStorage.getItem('type');
+    }
     this.items = [
     {label: 'Accueil', icon: 'pi pi-fw pi-home', routerLink: 'accueil'},
     {label: 'Bons véhicules', items: [

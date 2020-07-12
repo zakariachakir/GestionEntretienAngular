@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PresBonLivraisonService} from '../../controller/service/pres-bon-livraison.service';
 import {PresBonLivraison} from '../../controller/model/pres-bon-livraison.model';
 import {ConfirmationService, MessageService} from "primeng/api";
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-pres-bon-livraison',
@@ -11,12 +12,12 @@ import {ConfirmationService, MessageService} from "primeng/api";
 export class PresBonLivraisonComponent implements OnInit {
   typeuser = localStorage.getItem('type');
   cols: any;
-  constructor(private presBonLivraisonService: PresBonLivraisonService,
+  constructor(private presBonLivraisonService: PresBonLivraisonService, private urlconfigurationService: UrlconfigurationService,
               private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.presBonLivraisonService.findAll();
       this.cols = [

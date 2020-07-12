@@ -3,6 +3,7 @@ import {PresBonCommande} from '../model/pres-bon-commande.model';
 import {HttpClient} from '@angular/common/http';
 import {ToastrService} from 'ngx-toastr';
 import {PresBonLivraison} from '../model/pres-bon-livraison.model';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ import {PresBonLivraison} from '../model/pres-bon-livraison.model';
 export class PresBonLivraisonService {
 
   private _foundedPresBonLivraisons = new Array<PresBonLivraison>();
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonLivraison/';
-  constructor(private http: HttpClient, private toast: ToastrService) { }
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonLivraison/';
+  constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService, private toast: ToastrService) { }
   public findAll() {
     this.http.get<Array<PresBonLivraison>>(this.url).subscribe(
       data => {

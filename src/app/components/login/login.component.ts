@@ -3,6 +3,7 @@ import {LoginService} from '../../controller/service/login.service';
 import {Router} from '@angular/router';
 import {Users} from '../../controller/model/users.model';
 import {AuthenticationService} from '../../controller/service/authentication.service';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {AuthenticationService} from '../../controller/service/authentication.ser
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService, private router: Router, private auth: AuthenticationService) { }
+  constructor(private loginService: LoginService, private urlconfigurationService: UrlconfigurationService, private router: Router, private auth: AuthenticationService) { }
 
   get progressLogen(): boolean {
     return this.loginService.progressLogen;
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   islogged() {
     if (this.loginService.isUserLoggedIn()) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     }
   }
 

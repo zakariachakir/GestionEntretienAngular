@@ -10,6 +10,7 @@ import {Materiel} from '../../controller/model/materiel.model';
 import {LocaldetailService} from '../../controller/service/localdetail.service';
 import {Localdetail} from '../../controller/model/localdetail.model';
 import {ToastrService} from 'ngx-toastr';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-reclamer',
@@ -38,8 +39,9 @@ export class ReclamerComponent implements OnInit {
   selectedLocale = new  Local();
 
   cols: any[];
+  cancelmodify: boolean;
 
-  constructor(private fb: FormBuilder, private reclamationService: ReclamationService,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService, private reclamationService: ReclamationService,
               private localService: LocalService,
               private localdetailService: LocaldetailService,
               private toast: ToastrService,
@@ -61,7 +63,7 @@ export class ReclamerComponent implements OnInit {
     this.localService.findAll();
     this.cols = [
       { field: 'reference', header: 'Référence' },
-      { field: 'reclamentName', header: 'Réclament' },
+      { field: 'reclamentName', header: 'Réclamant' },
       { field: 'date', header: 'Date' },
       { field: 'objet', header: 'Objet' },
       { field: 'description', header: 'Description' },
@@ -79,7 +81,6 @@ export class ReclamerComponent implements OnInit {
     this.userform1 = this.fb.group({
       objett: new FormControl('', Validators.required),
       locale: new FormControl('', Validators.required),
-      mater: new FormControl('', Validators.required),
       desc: new FormControl('', Validators.required),
     });
 
@@ -142,12 +143,18 @@ export class ReclamerComponent implements OnInit {
   onRowSelect(event) {
     this.newReclamation = false;
     this.reclamation = this.cloneReclamation(event.data);
-    if (this.reclamation.nomMateriel === 'Pas de materiel' || this.reclamation.nomMateriel == null) {
+    if (this.reclamation.etat === 'Bien Traitée') {
+      this.cancelmodify = true;
+    } else {
+      this.cancelmodify = false;
+    }
+    if (this.reclamation.nomMateriel === 'Pas de matériel' || this.reclamation.nomMateriel == null) {
       this.displayDialog = true;
     } else {
       this.displayDialogM = true;
     }
     this.cancel = false;
+
   }
 
   cloneReclamation(r: Reclamation): Reclamation {

@@ -7,6 +7,7 @@ import {MenuItem, SelectItem} from 'primeng';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {ConfirmationService, MessageService} from "primeng/api";
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-reclamation',
@@ -32,7 +33,7 @@ export class ReclamationComponent implements OnInit {
   cols: any[];
 
   locales: Array<any>;
-  constructor(private reclamationService: ReclamationService, private toast: ToastrService,
+  constructor(private reclamationService: ReclamationService, private urlconfigurationService: UrlconfigurationService, private toast: ToastrService,
               private confirmationService: ConfirmationService) { }
 
   confirm(data: Reclamation) {
@@ -48,7 +49,7 @@ export class ReclamationComponent implements OnInit {
 
    this.cols = [
       { field: 'reference', header: 'Référence' },
-      { field: 'reclamentName', header: 'Réclament' },
+      { field: 'reclamentName', header: 'Réclamant' },
       { field: 'date', header: 'Date' },
       { field: 'objet', header: 'Objet' },
       { field: 'description', header: 'Description' },
@@ -87,7 +88,7 @@ export class ReclamationComponent implements OnInit {
   onRowSelect(event) {
     this.newReclamation = false;
     this.reclamation = this.cloneReclamation(event.data);
-    if (this.reclamation.nomMateriel === 'Pas de materiel' || this.reclamation.nomMateriel == null) {
+    if (this.reclamation.nomMateriel === 'Pas de matériel' || this.reclamation.nomMateriel == null) {
       this.displayDialog = true;
     } else {
       this.displayDialogM = true;
@@ -111,7 +112,7 @@ export class ReclamationComponent implements OnInit {
     if (reclamation.etat === 'Sous Traitement') {
       this.toast.warning('la réclamation est déja vue');
     } else if (reclamation.etat === 'Bien Traitée') {
-      this.toast.warning('la réclamation est bien traitée, vous pouvez pas faire cette action');
+      this.toast.warning('la réclamation est bien traitée, vous ne pouvez pas faire cette action');
     } else {
       this.reclamationService.reclamationSeen(reclamation.reference);
       }

@@ -14,6 +14,7 @@ import {Agent} from '../../controller/model/agent.model';
 import {PrestationInterneService} from '../../controller/service/prestation-interne.service';
 import {PrestationExterneService} from '../../controller/service/prestation-externe.service';
 import {ToastrService} from 'ngx-toastr';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 
 @Component({
@@ -43,7 +44,7 @@ export class PrestationComponent implements OnInit {
   public prestataionExterne = new PrestationExterne();
   public foundedAgents = new Array<Agent>();
 
-  constructor(private fb: FormBuilder, private reclamationService: ReclamationService,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService, private reclamationService: ReclamationService,
               private prestationInterneService: PrestationInterneService,
               private localService: LocalService,
               private toast: ToastrService,
@@ -52,7 +53,7 @@ export class PrestationComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.reclamationService.findAll();
       this.localService.findAll();
@@ -80,14 +81,14 @@ export class PrestationComponent implements OnInit {
 
       this.cols = [
         { field: 'reference', header: 'Référence réclamation' },
-        { field: 'reclamentName', header: 'Réclament' },
+        { field: 'reclamentName', header: 'Réclamant' },
         { field: 'objet', header: 'Objet' },
         { field: 'etat', header: 'État' }
       ];
       this.entretiens = [
-        { value: 'materiel', label: 'Matériel' },
+        { value: 'matériel', label: 'Matériel' },
         { value: 'jardinage', label: 'Jardinage' },
-        { value: 'electricité', label: 'Electricité' },
+        { value: 'électricité', label: 'Électricité' },
         { value: 'plomberie', label: 'Plomberie' },
         { value: 'télephone', label: 'Télephone' },
         { value: 'minuiserie', label: 'Minuiserie' },

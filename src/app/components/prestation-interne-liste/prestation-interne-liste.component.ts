@@ -13,6 +13,7 @@ import {Local} from '../../controller/model/local.model';
 import {Localdetail} from '../../controller/model/localdetail.model';
 import {ToastrService} from 'ngx-toastr';
 import {ConfirmationService, MessageService} from "primeng/api";
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-prestation-interne-liste',
@@ -39,7 +40,7 @@ export class PrestationInterneListeComponent implements OnInit {
   cols: any[];
   entretiens: any[];
   foundedAgents = new Array<Agent>();
-  constructor(private fb: FormBuilder,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService,
               private prestationInterneService: PrestationInterneService,
               private localdetailService: LocaldetailService,
               private agentService: AgentService,
@@ -58,7 +59,7 @@ export class PrestationInterneListeComponent implements OnInit {
   }
   ngOnInit() {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.prestationInterneService.findAll();
       this.localService.findAll();

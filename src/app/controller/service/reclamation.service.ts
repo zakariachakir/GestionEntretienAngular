@@ -4,6 +4,7 @@ import {Car} from '../model/car';
 import {Reclamation} from '../model/reclamation.model';
 import {ReclamationComponent} from '../../components/reclamation/reclamation.component';
 import {ToastrService} from 'ngx-toastr';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,10 @@ export class ReclamationService {
   private _foundedReclamationsNonTraiter = new Array<Reclamation>();
   // tslint:disable-next-line:variable-name
   private _foundedReclamationsemploye = new Array<Reclamation>();
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/reclamation/';
-  private urlr = 'http://localhost:8080/GestionEntretien/GestionEntretien/reclamation/reclaments/';
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/reclamation/';
+  private urlr = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/reclamation/reclaments/';
 
-  constructor(private http: HttpClient, private toast: ToastrService) {
+  constructor(private http: HttpClient, private toast: ToastrService,private urlconfigurationService: UrlconfigurationService) {
   }
 
 
@@ -73,7 +74,7 @@ export class ReclamationService {
     this.http.get<number>(this.url + reference).subscribe(
       data => {
         console.log('success reclamation seen');
-        this.toast.success('Reclamation vue');
+        this.toast.success('Réclamation vue');
         this.findAll();
       }, error => {
         console.log('erroror in the link');

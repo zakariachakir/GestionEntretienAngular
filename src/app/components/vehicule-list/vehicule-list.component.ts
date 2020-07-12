@@ -3,6 +3,7 @@ import {CarService} from '../../controller/service/car.service';
 import {Car} from '../../controller/model/car';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationService, MessageService, SelectItem} from 'primeng/api';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-vehicule-list',
@@ -31,7 +32,7 @@ export class VehiculeListComponent implements OnInit {
   userform: FormGroup;
   typeuser = localStorage.getItem('type');
 
-  constructor(private fb: FormBuilder, private messageService: MessageService, private carService: CarService,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService, private messageService: MessageService, private carService: CarService,
               private confirmationService: ConfirmationService) { }
 
   confirm() {
@@ -44,7 +45,7 @@ export class VehiculeListComponent implements OnInit {
   }
   ngOnInit() {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.userform = this.fb.group({
         matricule: new FormControl('', Validators.required),

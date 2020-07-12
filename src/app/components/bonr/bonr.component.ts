@@ -8,6 +8,7 @@ import {CarService} from "../../controller/service/car.service";
 import {FournisseurSVService} from "../../controller/service/fournisseur-sv.service";
 import {FournisseurSV} from "../../controller/model/fournisseurSV.model";
 import {Car} from "../../controller/model/car";
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-bonr',
@@ -33,7 +34,7 @@ export class BonrComponent implements OnInit {
   cars: Car[];
   typeuser = localStorage.getItem('type');
 
-  constructor(private fb: FormBuilder, private messageService: MessageService, private bonrService: BonrService,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService, private messageService: MessageService, private bonrService: BonrService,
               private carService: CarService , private fournisseurSVService: FournisseurSVService,
               private confirmationService: ConfirmationService) { }
   confirm() {
@@ -46,7 +47,7 @@ export class BonrComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.userform = this.fb.group({
         numbonR: new FormControl('', Validators.required),

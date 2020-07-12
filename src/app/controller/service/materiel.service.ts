@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Materiel} from '../model/materiel.model';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,8 @@ import {Materiel} from '../model/materiel.model';
 export class MaterielService {
 
   private _foundedMateriels = new Array<Materiel>();
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/materiel/';
-  constructor(private http: HttpClient) {}
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/materiel/';
+  constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService) {}
 
   save(materiel: Materiel) {
     this.http.post<number>(this.url, materiel).subscribe(

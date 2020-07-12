@@ -3,6 +3,7 @@ import {ConfirmationService, Message, MessageService, SelectItem} from 'primeng/
 import {FournisseurSV} from '../../controller/model/fournisseurSV.model';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {FournisseurSVService} from '../../controller/service/fournisseur-sv.service';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-fournisseur-sv',
@@ -32,7 +33,7 @@ export class FournisseurSVComponent implements OnInit {
   errorC: number ;
 
   msgs: Message[] = [];
-  constructor(private fb: FormBuilder, private messageService: MessageService, private fournisseurService: FournisseurSVService,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService, private messageService: MessageService, private fournisseurService: FournisseurSVService,
               private confirmationService: ConfirmationService) { }
   confirm() {
     this.confirmationService.confirm({
@@ -44,7 +45,7 @@ export class FournisseurSVComponent implements OnInit {
   }
   ngOnInit() {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
 
       this.fournisseurService.findAll();
@@ -66,7 +67,6 @@ export class FournisseurSVComponent implements OnInit {
       ];
 
       this.cols = [
-        {field: 'reference', header: 'Référence'},
         {field: 'nomf', header: 'Nom Fournisseur'},
         {field: 'adressef', header: 'Adresse'},
         {field: 'emailf', header: 'Adresse Mail'},

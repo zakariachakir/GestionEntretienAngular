@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {BonsV} from '../model/bons-v.model';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BonvService {
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonvidange/';
-  private urlu = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonvidange/update';
-  private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/bonvidange/delete/';
-  constructor(private http: HttpClient) {}
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonvidange/';
+  private urlu = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonvidange/update';
+  private urld = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonvidange/delete/';
+  constructor(private http: HttpClient , private urlconfigurationService: UrlconfigurationService) {}
 
   public save(bonvidange: BonsV)  {
     return  this.http.post<number>(this.url, bonvidange);

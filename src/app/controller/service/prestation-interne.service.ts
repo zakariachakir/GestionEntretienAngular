@@ -4,6 +4,7 @@ import {PrestationInterne} from '../model/prestation-interne.model';
 import {ReclamationService} from './reclamation.service';
 import {ToastrService} from 'ngx-toastr';
 import {forEachComment} from 'tslint';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,9 @@ export class PrestationInterneService {
 
   private _dataPresInterne: number;
   private _foundedPrestationInternes = new Array<PrestationInterne>();
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/prestationInterne/';
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/prestationInterne/';
   private _progress: boolean;
-  constructor(private http: HttpClient, private reclamationService: ReclamationService, private toast: ToastrService) { }
+  constructor(private http: HttpClient,private urlconfigurationService: UrlconfigurationService, private reclamationService: ReclamationService, private toast: ToastrService) { }
 
   public save(prestationInterne: PrestationInterne) {
     return  this.http.post<number>(this.url, prestationInterne);

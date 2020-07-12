@@ -6,6 +6,7 @@ import {PrestationInterneService} from '../../controller/service/prestation-inte
 import {PrestationExterneService} from '../../controller/service/prestation-externe.service';
 import {AccueilService} from '../../controller/service/accueil.service';
 import {HttpClient} from '@angular/common/http';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 
 @Component({
@@ -20,8 +21,8 @@ export class ActionsComponent implements OnInit {
   dataUtilisateur: any;
   dataVehicule: any;
   dataMateriel: any;
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/accueil/';
-  constructor(private accueilService: AccueilService , private http: HttpClient) { }
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/accueil/';
+  constructor(private accueilService: AccueilService , private urlconfigurationService: UrlconfigurationService, private http: HttpClient) { }
   ngOnInit() {
     this.findALL();
     this.findAllReclamationNonLu();

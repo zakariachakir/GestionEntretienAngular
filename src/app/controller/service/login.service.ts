@@ -6,6 +6,7 @@ import {UsersService} from './users.service';
 import {Router} from '@angular/router';
 import {AuthenticationService} from './authentication.service';
 import {MessageService} from 'primeng';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class LoginService {
   private _user: Users;
   private _errorS: number  ;
   private _errorC: number = null ;
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/Login/';
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/Login/';
   private _currentuser: Users = null;
   private _progressLogen: boolean;
   private _type: string;
@@ -46,7 +47,7 @@ export class LoginService {
     this._type = value;
   }
 
-  constructor(private http: HttpClient , private usersService: UsersService , private route: Router,
+  constructor(private http: HttpClient , private urlconfigurationService: UrlconfigurationService, private usersService: UsersService , private route: Router,
               private messageService: MessageService) {}
 
 
@@ -130,7 +131,7 @@ export class LoginService {
     localStorage.removeItem('password');
     localStorage.removeItem('telephone');
     localStorage.removeItem('reference');
-    window.location.href = 'http://localhost:8080/Gestionentretienf/';
+    window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/';
   }
 
 
@@ -165,14 +166,14 @@ export class LoginService {
                  this.type = localStorage.getItem('type');
                  this.prenom = localStorage.getItem('nom');
                  this.nomm = localStorage.getItem('prenom');
-                 window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+                 window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
                }
                console.log(this.currentuser);
                this.progressLogen = false;
              }
            );
            //    this.route.navigate(['accueil']);
-           //    window.location.href = 'http://localhost:8080/Gestionentretienf/accueil';
+           //    window.location.href = 'http://'+this.urlconfigurationService.urldb+'f/accueil';
          }
        },
        error => {

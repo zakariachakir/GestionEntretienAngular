@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Users} from '../model/users.model';
 import {Observable} from 'rxjs';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  private urls = 'http://localhost:8080/GestionEntretien/GestionEntretien/Login/';
-  private urlu = 'http://localhost:8080/GestionEntretien/GestionEntretien/Login/update';
-  private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/Login/delete/';
-  private urlfind = 'http://localhost:8080/GestionEntretien/GestionEntretien/Login/username/';
+  private urls = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/Login/';
+  private urlu = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/Login/update';
+  private urld = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/Login/delete/';
+  private urlfind = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/Login/username/';
   private _user = new Users();
   get user(): Users {
     return this._user;
@@ -20,7 +21,7 @@ export class UsersService {
     this._user = value;
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private urlconfigurationService: UrlconfigurationService) { }
   public save(user: Users) {
    return  this.http.post<number>(this.urls, user);
   }

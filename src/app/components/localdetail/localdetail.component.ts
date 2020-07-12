@@ -8,6 +8,7 @@ import {LocalService} from '../../controller/service/local.service';
 import {Materiel} from '../../controller/model/materiel.model';
 import {Local} from '../../controller/model/local.model';
 import {ToastrService} from 'ngx-toastr';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-localdetail',
@@ -21,7 +22,7 @@ export class LocaldetailComponent implements OnInit {
   displayDialog: boolean;
   submitted: boolean;
   local = new Localdetail();
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/locale/';
+  private url = 'http://'+this.urlconfigurationService.urlpageaccueil+'/GestionEntretien/locale/';
   selectedLocal: Localdetail;
   newLocal: boolean;
 
@@ -35,7 +36,7 @@ export class LocaldetailComponent implements OnInit {
 
   errorS: number;
   errorC: number;
-  constructor(private fb: FormBuilder,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService,
               private materielService: MaterielService,
               private localService: LocalService,
               private localdetailService: LocaldetailService,
@@ -44,7 +45,7 @@ export class LocaldetailComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
 
       this.localdetailService.findAll();
@@ -52,7 +53,6 @@ export class LocaldetailComponent implements OnInit {
       this.userform = this.fb.group({
         referencelocal: new FormControl('', Validators.required),
         materiellocal: new FormControl('', Validators.required),
-        localassocie: new FormControl('', Validators.required),
         dateachat: new FormControl('', Validators.required),
       });
       this.localService.findAll();

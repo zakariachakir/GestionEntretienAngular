@@ -3,6 +3,7 @@ import {ConfirmationService, Message, MessageService, SelectItem} from 'primeng/
 import {Users} from '../../controller/model/users.model';
 import {UsersService} from '../../controller/service/users.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-users',
@@ -34,7 +35,7 @@ export class UsersComponent implements OnInit {
 
   msgs: Message[] = [];
 
-  constructor(private fb: FormBuilder, private messageService: MessageService,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService, private messageService: MessageService,
               private userService: UsersService,
               private confirmationService: ConfirmationService) {
   }
@@ -49,7 +50,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.userform = this.fb.group({
         nom: new FormControl('', Validators.required),

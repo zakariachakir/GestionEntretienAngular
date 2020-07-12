@@ -7,6 +7,7 @@ import {MaterielService} from '../../controller/service/materiel.service';
 import {FournisseurSVService} from '../../controller/service/fournisseur-sv.service';
 import {FournisseurSV} from '../../controller/model/fournisseurSV.model';
 import {ConfirmationService} from "primeng/api";
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-materiel',
@@ -38,7 +39,7 @@ export class MaterielComponent implements OnInit {
   fournisseursfiltre = new Array<FournisseurSV>();
 
   types: Array<any>;
-  constructor(private fb: FormBuilder,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService,
               private materielService: MaterielService,
               private messageService: MessageService,
               private fournisseurService: FournisseurSVService,
@@ -47,7 +48,7 @@ export class MaterielComponent implements OnInit {
 
   ngOnInit() {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
 
       this.materielService.findAll();

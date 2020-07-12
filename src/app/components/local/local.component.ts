@@ -3,6 +3,7 @@ import {Local} from '../../controller/model/local.model';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationService, MessageService, SelectItem} from 'primeng/api';
 import {LocalService} from '../../controller/service/local.service';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-local',
@@ -33,7 +34,7 @@ export class LocalComponent implements OnInit {
   typeuser = localStorage.getItem('type');
   errorS: number ;
   errorC: number ;
-  constructor(private fb: FormBuilder, private messageService: MessageService, private localService: LocalService,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService, private messageService: MessageService, private localService: LocalService,
               private confirmationService: ConfirmationService) { }
   confirm() {
     this.confirmationService.confirm({
@@ -45,7 +46,7 @@ export class LocalComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
 
       this.localService.findAll();

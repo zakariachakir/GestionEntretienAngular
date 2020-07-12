@@ -12,6 +12,7 @@ import {ToastrService} from 'ngx-toastr';
 import {PresBonLivraison} from '../../controller/model/pres-bon-livraison.model';
 import {PresBonCommande} from '../../controller/model/pres-bon-commande.model';
 import {ConfirmationService, MessageService} from "primeng/api";
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-prestation-externe-liste',
@@ -36,7 +37,7 @@ export class PrestationExterneListeComponent implements OnInit {
   userform1: FormGroup;
   typeuser = localStorage.getItem('type');
 
-  constructor(private fb: FormBuilder, private reclamationService: ReclamationService,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService, private reclamationService: ReclamationService,
               private localService: LocalService,
               private toast: ToastrService,
               private prestationExterneService: PrestationExterneService,
@@ -52,7 +53,7 @@ export class PrestationExterneListeComponent implements OnInit {
 
   ngOnInit() {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.prestationExterneService.findAll();
       this.reclamationService.findAllReclamationsNonTraiter();

@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Agent} from '../model/agent.model';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AgentService {
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/agent/';
-  private urlu = 'http://localhost:8080/GestionEntretien/GestionEntretien/agent/update';
-  private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/agent/deleteAgent/';
-  constructor(private http: HttpClient) {}
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/agent/';
+  private urlu = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/agent/update';
+  private urld = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/agent/deleteAgent/';
+  constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService) {}
 
   public save(agent: Agent)  {
     return  this.http.post<number>(this.url, agent);

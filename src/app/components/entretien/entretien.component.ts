@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Entretien} from '../../controller/model/entretien.model';
 import {EntretienService} from '../../controller/service/entretien.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-entretien',
@@ -14,12 +15,12 @@ export class EntretienComponent implements OnInit {
   typeuser = localStorage.getItem('type');
 
 
-  constructor(private entretienService: EntretienService, private messageService: MessageService,
+  constructor(private entretienService: EntretienService, private urlconfigurationService: UrlconfigurationService, private messageService: MessageService,
               private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.cols = [
         { field: 'numFacture', header: 'Numéro Entretien' },

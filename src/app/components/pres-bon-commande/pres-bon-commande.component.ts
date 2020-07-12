@@ -3,6 +3,7 @@ import {PresBonCommandeService} from '../../controller/service/pres-bon-commande
 import {PresBonCommande} from '../../controller/model/pres-bon-commande.model';
 import {Reclamation} from '../../controller/model/reclamation.model';
 import {ConfirmationService, MessageService} from "primeng/api";
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-pres-bon-commande',
@@ -12,12 +13,12 @@ import {ConfirmationService, MessageService} from "primeng/api";
 export class PresBonCommandeComponent implements OnInit {
   typeuser = localStorage.getItem('type');
   cols: any;
-  constructor(private presBonCommandeService: PresBonCommandeService,
+  constructor(private presBonCommandeService: PresBonCommandeService, private urlconfigurationService: UrlconfigurationService,
               private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.presBonCommandeService.findAll();
       this.cols = [

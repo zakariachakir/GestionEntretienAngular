@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {PrestationExterne} from '../model/prestation-externee.model';
 import {ToastrService} from 'ngx-toastr';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ export class PrestationExterneService {
 
   private _dataPresExterne : number;
   private _foundedPrestationExternes = new Array<PrestationExterne>();
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/prestationExterne/';
-  constructor(private http: HttpClient, private toast: ToastrService) { }
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/prestationExterne/';
+  constructor(private http: HttpClient,private urlconfigurationService: UrlconfigurationService, private toast: ToastrService) { }
 
   public save(prestationE: PrestationExterne) {
     return this.http.post<number>(this.url, prestationE);

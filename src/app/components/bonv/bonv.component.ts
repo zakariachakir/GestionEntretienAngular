@@ -11,6 +11,7 @@ import {Car} from "../../controller/model/car";
 import {element} from "protractor";
 import {FOCUS_TRAP_INERT_STRATEGY} from "@angular/cdk/a11y";
 import {Entretien} from "../../controller/model/entretien.model";
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-bonv',
@@ -33,7 +34,7 @@ export class BonvComponent implements OnInit {
   fournisseursfiltre = new Array<FournisseurSV>();
   typeuser = localStorage.getItem('type');
   cars: Car[];
-  constructor(private fb: FormBuilder, private messageService: MessageService , private bonvService: BonvService,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService, private messageService: MessageService , private bonvService: BonvService,
               private carService: CarService , private fournisseurSVService: FournisseurSVService,
               private confirmationService: ConfirmationService ) { }
   confirm() {
@@ -47,7 +48,7 @@ export class BonvComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.userform = this.fb.group({
         numbonV: new FormControl('', Validators.required),

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Localdetail} from '../model/localdetail.model';
 import {ToastrService} from 'ngx-toastr';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ import {ToastrService} from 'ngx-toastr';
 export class LocaldetailService {
   private _errors: number;
   private _foundedLocalDetails = new Array<Localdetail>();
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/materielsLocale/';
-  constructor(private http: HttpClient, private toast: ToastrService) { }
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/materielsLocale/';
+  constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService , private toast: ToastrService) { }
 
 
   get errors(): number {

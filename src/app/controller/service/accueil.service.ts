@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class AccueilService {
 
   // tslint:disable-next-line:variable-name
   private _progress: boolean;
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/accueil/';
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/accueil/';
   // tslint:disable-next-line:variable-name
   private _dataPresInterne: number;
   // tslint:disable-next-line:variable-name
@@ -41,7 +42,7 @@ export class AccueilService {
   private _dataBonCmd: number;
   // tslint:disable-next-line:variable-name
   private _dataBonLiv: number;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService) { }
 
 
 

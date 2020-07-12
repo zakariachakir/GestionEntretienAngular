@@ -5,6 +5,7 @@ import {UsersService} from '../../controller/service/users.service';
 import {Agent} from '../../controller/model/agent.model';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AgentService} from '../../controller/service/agent.service';
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-agent',
@@ -33,7 +34,7 @@ export class AgentComponent implements OnInit {
   typeuser = localStorage.getItem('type');
 
 
-  constructor(private fb: FormBuilder, private messageService: MessageService , private agentService: AgentService,
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService, private messageService: MessageService , private agentService: AgentService,
               private confirmationService: ConfirmationService ) {
   }
   confirm() {
@@ -46,7 +47,7 @@ export class AgentComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.userform = this.fb.group({
         codeAgent: new FormControl('', Validators.required),
@@ -59,7 +60,6 @@ export class AgentComponent implements OnInit {
       });
 
       this.cols = [
-        {field: 'reference', header: 'Référence'} ,
         {field: 'codeAgent', header: 'Code Agent'} ,
         {field: 'nomAgent', header: 'Nom Agent'},
         {field: 'dateEntree', header: 'Date Entrée'},

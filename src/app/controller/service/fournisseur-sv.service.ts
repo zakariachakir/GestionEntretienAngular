@@ -5,6 +5,7 @@ import {Reclamation} from '../model/reclamation.model';
 import {MessageService} from 'primeng/api';
 import {Observable} from "rxjs";
 import {Users} from "../model/users.model";
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class FournisseurSVService {
   private _foundedFourniseurs = new Array<FournisseurSV>();
   private fournisseursfiltre = new Array<FournisseurSV>();
 
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/fournisseur/';
-  constructor(private http: HttpClient) { }
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/fournisseur/';
+  constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService) { }
 
   public save(fournisseur: FournisseurSV) {
     return this.http.post<number>(this.url, fournisseur);

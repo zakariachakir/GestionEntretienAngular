@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Local} from '../model/local.model';
 import {log} from 'util';
 import {ToastrService} from 'ngx-toastr';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ import {ToastrService} from 'ngx-toastr';
 export class LocalService {
 
   private _foudedLocales = new Array<Local>();
-  private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/locale/';
-  constructor(private http: HttpClient, private toast: ToastrService) { }
+  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/locale/';
+  constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService, private toast: ToastrService) { }
 
   public save(locale: Local) {
     this.http.post<number>(this.url, locale).subscribe(

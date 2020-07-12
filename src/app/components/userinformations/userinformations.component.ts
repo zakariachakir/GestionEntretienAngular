@@ -6,6 +6,7 @@ import {MessageService} from 'primeng/api';
 import {UsersService} from '../../controller/service/users.service';
 import {Users} from '../../controller/model/users.model';
 import {LoginService} from "../../controller/service/login.service";
+import {UrlconfigurationService} from "../../controller/service/urlconfiguration.service";
 
 @Component({
   selector: 'app-vehicule',
@@ -29,11 +30,11 @@ export class UserinformationsComponent implements OnInit {
   typeuser = localStorage.getItem('type');
 
   // tslint:disable-next-line:max-line-length
-  constructor(private fb: FormBuilder, private loginService: LoginService ,private messageService: MessageService , private usersService: UsersService) {}
+  constructor(private fb: FormBuilder, private urlconfigurationService: UrlconfigurationService ,private loginService: LoginService ,private messageService: MessageService , private usersService: UsersService) {}
 
   ngOnInit() {
     if (this.typeuser === 'administrateur' ) {
-      window.location.href = 'http://localhost:8080/Gestionentretienf/#/accueil';
+      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
     }
     this.userform = this.fb.group({
       username: new FormControl('', Validators.required),

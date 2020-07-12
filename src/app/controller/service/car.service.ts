@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Car} from '../model/car';
 import {Observable} from 'rxjs';
+import {UrlconfigurationService} from "./urlconfiguration.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
-private url = 'http://localhost:8080/GestionEntretien/GestionEntretien/vehicule/';
-private urlu = 'http://localhost:8080/GestionEntretien/GestionEntretien/vehicule/update';
-private urld = 'http://localhost:8080/GestionEntretien/GestionEntretien/vehicule/deleteVehicule/';
-  constructor(private http: HttpClient) {}
+private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/vehicule/';
+private urlu = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/vehicule/update';
+private urld = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/vehicule/deleteVehicule/';
+  constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService) {}
 
   public save(car: Car)  {
    return  this.http.post<number>(this.url, car);

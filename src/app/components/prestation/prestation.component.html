@@ -42,7 +42,7 @@
           </div>
           <div class="ui-g-5">
             <div class="form-group" [formGroup]="userform"  >
-            <p-dropdown id="nomloc" formControlName="Locale" [options]="foundedLocales" optionLabel="descriptionDropDown" placeholder="Choisissez un locale" [(ngModel)]="selectedLocalee" [filter]="true"></p-dropdown>
+            <p-dropdown id="nomloc" formControlName="Locale" [options]="foundedLocales" optionLabel="descriptionDropDown" placeholder="Choisissez un local" [(ngModel)]="selectedLocalee" [filter]="true"></p-dropdown>
             </div>
           </div>
 
@@ -54,7 +54,7 @@
         </div>
 
 
-        <div class="ui-g-12" *ngIf="selectedEntretien === 'materiel'">
+        <div class="ui-g-12" *ngIf="selectedEntretien === 'matériel'">
           <div class="ui-g-3">
             <label for="nomMat" style="color: #00aeef"><strong>Matériel :</strong> </label>
           </div>
@@ -155,7 +155,7 @@
           </div>
         </div>
 
-        <div class="ui-g-12" *ngIf="prestataionExterne.typeEntretienE === 'materiel'">
+        <div class="ui-g-12" *ngIf="prestataionExterne.typeEntretienE === 'matériel'">
           <div class="ui-g-3">
             <label for="nomMatE" style="color: #00aeef"><strong>Matériel :</strong> </label>
           </div>

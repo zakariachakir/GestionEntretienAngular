@@ -3,18 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --target=production"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^9.1.9",
     "@angular/cdk": "^9.2.1",
+    "@angular/cli": "~9.0.3",
     "@angular/common": "~9.0.2",
     "@angular/compiler": "~9.0.2",
+    "@angular/compiler-cli": "~9.0.2",
     "@angular/core": "~9.0.2",
     "@angular/forms": "~9.0.2",
     "@angular/material": "^9.2.1",
@@ -24,6 +27,7 @@
     "@fullcalendar/core": "^4.4.0",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "ngx-toastr": "^12.0.1",
     "primeicons": "^2.0.0",
@@ -31,12 +35,11 @@
     "quill": "^1.3.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "typescript": "~3.7.5",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.3",
-    "@angular/cli": "~9.0.3",
-    "@angular/compiler-cli": "~9.0.2",
     "@angular/language-service": "~9.0.2",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
@@ -51,7 +54,10 @@
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
-    "tslint": "~5.18.0",
-    "typescript": "~3.7.5"
+    "tslint": "~5.18.0"
+  },
+  "engines": {
+    "node": "12.16.1",
+    "npm": "6.13.4"
   }
 }

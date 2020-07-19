@@ -1,9 +1,9 @@
 const express = require('express');
-const app = express();
 const path = require('path');
-app.use(express.static(__dirname + '/dist'));
-app.listen(process.env.PORT || 54988);
+const app = express();
+app.use(express.static(__dirname + '/dist/stock'));
 app.get('/*', function (req, res) {
-res.sendFile(path.join(__dirname + '/dist/index.html'));
+res.sendFile(path.join(__dirname + '/dist/stock/index.html'));
 });
+app.listen(process.env.PORT || 24942);
 console.log('im running');

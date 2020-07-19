@@ -131,7 +131,7 @@ export class LoginService {
     localStorage.removeItem('password');
     localStorage.removeItem('telephone');
     localStorage.removeItem('reference');
-    window.location.href = this.urlconfigurationService.urlpageaccueil+'/';
+    window.location.href = this.urlconfigurationService.urlpageaccueil2 +'/';
   }
 
 

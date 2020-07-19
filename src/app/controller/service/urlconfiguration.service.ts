@@ -8,7 +8,12 @@ export class UrlconfigurationService {
 private _urldb = 'https://fstentretien.herokuapp.com';
   /* !!!! ici vous devez l'url du front end sous la forme lien:Port (sans ajout de http://) */
 private _urlpageaccueil = 'https://entretienfst.herokuapp.com/#';
+private _urlpageaccueil2 = 'https://entretienfst.herokuapp.com';
 
+
+  get urlpageaccueil2(): string {
+    return this._urlpageaccueil2;
+  }
 
   get urldb(): string {
     return this._urldb;

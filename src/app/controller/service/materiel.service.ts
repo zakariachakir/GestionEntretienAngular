@@ -9,7 +9,7 @@ import {UrlconfigurationService} from "./urlconfiguration.service";
 export class MaterielService {
 
   private _foundedMateriels = new Array<Materiel>();
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/materiel/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/materiel/';
   constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService) {}
 
   save(materiel: Materiel) {

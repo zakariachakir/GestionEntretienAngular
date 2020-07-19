@@ -22,7 +22,7 @@ export class LocaldetailComponent implements OnInit {
   displayDialog: boolean;
   submitted: boolean;
   local = new Localdetail();
-  private url = 'http://'+this.urlconfigurationService.urlpageaccueil+'/GestionEntretien/locale/';
+  private url = this.urlconfigurationService.urlpageaccueil+'/GestionEntretien/locale/';
   selectedLocal: Localdetail;
   newLocal: boolean;
 
@@ -45,7 +45,7 @@ export class LocaldetailComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
+      window.location.href = this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
 
       this.localdetailService.findAll();

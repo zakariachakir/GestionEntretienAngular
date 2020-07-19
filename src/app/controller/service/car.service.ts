@@ -8,9 +8,9 @@ import {UrlconfigurationService} from "./urlconfiguration.service";
   providedIn: 'root'
 })
 export class CarService {
-private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/vehicule/';
-private urlu = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/vehicule/update';
-private urld = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/vehicule/deleteVehicule/';
+private url = this.urlconfigurationService.urldb+'/GestionEntretien/vehicule/';
+private urlu = this.urlconfigurationService.urldb+'/GestionEntretien/vehicule/update';
+private urld = this.urlconfigurationService.urldb+'/GestionEntretien/vehicule/deleteVehicule/';
   constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService) {}
 
   public save(car: Car)  {

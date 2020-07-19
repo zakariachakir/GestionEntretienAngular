@@ -21,7 +21,7 @@ export class ActionsComponent implements OnInit {
   dataUtilisateur: any;
   dataVehicule: any;
   dataMateriel: any;
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/accueil/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/accueil/';
   constructor(private accueilService: AccueilService , private urlconfigurationService: UrlconfigurationService, private http: HttpClient) { }
   ngOnInit() {
     this.findALL();

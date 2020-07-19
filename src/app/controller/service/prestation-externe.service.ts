@@ -11,7 +11,7 @@ export class PrestationExterneService {
 
   private _dataPresExterne : number;
   private _foundedPrestationExternes = new Array<PrestationExterne>();
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/prestationExterne/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/prestationExterne/';
   constructor(private http: HttpClient,private urlconfigurationService: UrlconfigurationService, private toast: ToastrService) { }
 
   public save(prestationE: PrestationExterne) {

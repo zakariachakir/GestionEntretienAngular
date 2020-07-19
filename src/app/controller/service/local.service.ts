@@ -11,7 +11,7 @@ import {UrlconfigurationService} from "./urlconfiguration.service";
 export class LocalService {
 
   private _foudedLocales = new Array<Local>();
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/locale/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/locale/';
   constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService, private toast: ToastrService) { }
 
   public save(locale: Local) {

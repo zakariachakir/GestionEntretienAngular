@@ -15,7 +15,7 @@ export class FournisseurSVService {
   private _foundedFourniseurs = new Array<FournisseurSV>();
   private fournisseursfiltre = new Array<FournisseurSV>();
 
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/fournisseur/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/fournisseur/';
   constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService) { }
 
   public save(fournisseur: FournisseurSV) {

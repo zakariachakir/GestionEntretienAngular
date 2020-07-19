@@ -15,7 +15,7 @@ export class LoginService {
   private _user: Users;
   private _errorS: number  ;
   private _errorC: number = null ;
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/Login/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/Login/';
   private _currentuser: Users = null;
   private _progressLogen: boolean;
   private _type: string;
@@ -131,7 +131,7 @@ export class LoginService {
     localStorage.removeItem('password');
     localStorage.removeItem('telephone');
     localStorage.removeItem('reference');
-    window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/';
+    window.location.href = this.urlconfigurationService.urlpageaccueil+'/';
   }
 
 
@@ -166,14 +166,14 @@ export class LoginService {
                  this.type = localStorage.getItem('type');
                  this.prenom = localStorage.getItem('nom');
                  this.nomm = localStorage.getItem('prenom');
-                 window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
+                 window.location.href = this.urlconfigurationService.urlpageaccueil+'/accueil';
                }
                console.log(this.currentuser);
                this.progressLogen = false;
              }
            );
            //    this.route.navigate(['accueil']);
-           //    window.location.href = 'http://'+this.urlconfigurationService.urldb+'f/accueil';
+           //    window.location.href = this.urlconfigurationService.urldb+'f/accueil';
          }
        },
        error => {

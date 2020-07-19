@@ -11,7 +11,7 @@ import {UrlconfigurationService} from "./urlconfiguration.service";
 export class PresBonLivraisonService {
 
   private _foundedPresBonLivraisons = new Array<PresBonLivraison>();
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonLivraison/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/bonLivraison/';
   constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService, private toast: ToastrService) { }
   public findAll() {
     this.http.get<Array<PresBonLivraison>>(this.url).subscribe(

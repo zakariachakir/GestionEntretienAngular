@@ -9,7 +9,7 @@ export class AccueilService {
 
   // tslint:disable-next-line:variable-name
   private _progress: boolean;
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/accueil/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/accueil/';
   // tslint:disable-next-line:variable-name
   private _dataPresInterne: number;
   // tslint:disable-next-line:variable-name

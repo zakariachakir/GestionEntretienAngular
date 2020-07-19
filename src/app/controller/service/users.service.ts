@@ -8,10 +8,10 @@ import {UrlconfigurationService} from "./urlconfiguration.service";
   providedIn: 'root'
 })
 export class UsersService {
-  private urls = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/Login/';
-  private urlu = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/Login/update';
-  private urld = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/Login/delete/';
-  private urlfind = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/Login/username/';
+  private urls = this.urlconfigurationService.urldb+'/GestionEntretien/Login/';
+  private urlu = this.urlconfigurationService.urldb +'/GestionEntretien/Login/update';
+  private urld = this.urlconfigurationService.urldb+'/GestionEntretien/Login/delete/';
+  private urlfind = this.urlconfigurationService.urldb+'/GestionEntretien/Login/username/';
   private _user = new Users();
   get user(): Users {
     return this._user;

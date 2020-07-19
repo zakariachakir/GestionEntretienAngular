@@ -17,7 +17,7 @@ export class PresBonLivraisonComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.typeuser === 'normal' ) {
-      window.location.href = 'http://'+this.urlconfigurationService.urlpageaccueil+'/accueil';
+      window.location.href = this.urlconfigurationService.urlpageaccueil+'/accueil';
     } else {
       this.presBonLivraisonService.findAll();
       this.cols = [

@@ -8,8 +8,8 @@ import {UrlconfigurationService} from "./urlconfiguration.service";
   providedIn: 'root'
 })
 export class EntretienService {
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/entretien/';
-  private urld = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/entretien/delete/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/entretien/';
+  private urld = this.urlconfigurationService.urldb+'/GestionEntretien/entretien/delete/';
   constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService) {}
 
   public findAll(): Observable<Entretien[]> {

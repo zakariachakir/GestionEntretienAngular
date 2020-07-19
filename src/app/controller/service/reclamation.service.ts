@@ -18,8 +18,8 @@ export class ReclamationService {
   private _foundedReclamationsNonTraiter = new Array<Reclamation>();
   // tslint:disable-next-line:variable-name
   private _foundedReclamationsemploye = new Array<Reclamation>();
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/reclamation/';
-  private urlr = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/reclamation/reclaments/';
+  private url = this.urlconfigurationService.urldb +'/GestionEntretien/reclamation/';
+  private urlr = this.urlconfigurationService.urldb +'/GestionEntretien/reclamation/reclaments/';
 
   constructor(private http: HttpClient, private toast: ToastrService,private urlconfigurationService: UrlconfigurationService) {
   }

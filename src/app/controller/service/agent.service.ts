@@ -8,9 +8,9 @@ import {UrlconfigurationService} from "./urlconfiguration.service";
   providedIn: 'root'
 })
 export class AgentService {
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/agent/';
-  private urlu = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/agent/update';
-  private urld = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/agent/deleteAgent/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/agent/';
+  private urlu = this.urlconfigurationService.urldb+'/GestionEntretien/agent/update';
+  private urld = this.urlconfigurationService.urldb+'/GestionEntretien/agent/deleteAgent/';
   constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService) {}
 
   public save(agent: Agent)  {

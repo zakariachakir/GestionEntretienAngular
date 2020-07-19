@@ -11,7 +11,7 @@ import {UrlconfigurationService} from "./urlconfiguration.service";
 export class PresBonCommandeService {
 
   private _foundedPresBonCommandes: Array<PresBonCommande>;
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonCommande/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/bonCommande/';
   constructor(private http: HttpClient, private urlconfigurationService: UrlconfigurationService, private toast: ToastrService) { }
 
   public findAll() {

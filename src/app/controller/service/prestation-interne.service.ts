@@ -13,7 +13,7 @@ export class PrestationInterneService {
 
   private _dataPresInterne: number;
   private _foundedPrestationInternes = new Array<PrestationInterne>();
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/prestationInterne/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/prestationInterne/';
   private _progress: boolean;
   constructor(private http: HttpClient,private urlconfigurationService: UrlconfigurationService, private reclamationService: ReclamationService, private toast: ToastrService) { }
 

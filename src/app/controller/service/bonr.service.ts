@@ -8,9 +8,9 @@ import {UrlconfigurationService} from "./urlconfiguration.service";
   providedIn: 'root'
 })
 export class BonrService {
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonreparation/';
-  private urlu = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonreparation/update';
-  private urld = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonreparation/delete/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/bonreparation/';
+  private urlu = this.urlconfigurationService.urldb+'/GestionEntretien/bonreparation/update';
+  private urld = this.urlconfigurationService.urldb+'/GestionEntretien/bonreparation/delete/';
   constructor(private http: HttpClient , private urlconfigurationService: UrlconfigurationService) {}
 
   public save(bonreparation: BonsR)  {

@@ -8,9 +8,9 @@ import {UrlconfigurationService} from "./urlconfiguration.service";
   providedIn: 'root'
 })
 export class BonvService {
-  private url = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonvidange/';
-  private urlu = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonvidange/update';
-  private urld = 'http://'+this.urlconfigurationService.urldb+'/GestionEntretien/bonvidange/delete/';
+  private url = this.urlconfigurationService.urldb+'/GestionEntretien/bonvidange/';
+  private urlu = this.urlconfigurationService.urldb+'/GestionEntretien/bonvidange/update';
+  private urld = this.urlconfigurationService.urldb+'/GestionEntretien/bonvidange/delete/';
   constructor(private http: HttpClient , private urlconfigurationService: UrlconfigurationService) {}
 
   public save(bonvidange: BonsV)  {

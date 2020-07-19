@@ -1,6 +1,6 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const path = path();
+const path = require('path');
 app.use(express.static(__dirname + '/dist'));
 app.listen(process.env.PORT || 54988);
 app.get('/*', function (req, res) {

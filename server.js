@@ -1,17 +1,16 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+app.enable('trust proxy');
 app.use(express.static(__dirname + '/dist/stock'));
 app.use(function (req, res , next) {
-  if(!req.secure) {
-    return res.redirect('https://' + req.headers.host + req.path);
+  if(req.secure) {
+    next();
+  } else {
+    res.redirect(301, 'https://' + req.headers.host + req.url);
   }
-next();
- } );
+ });
 app.get('/*', function (req, res) {
-  if(!req.secure){
-    return res.redirect('https://' + req.headers.host + req.path);
-  }
 res.sendFile(path.join(__dirname + '/dist/stock/index.html'));
 
 });
